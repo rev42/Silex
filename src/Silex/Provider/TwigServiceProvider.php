@@ -27,6 +27,7 @@ use Symfony\Bridge\Twig\Extension\WebLinkExtension;
 use Symfony\Bridge\Twig\Form\TwigRendererEngine;
 use Symfony\Bridge\Twig\Extension\HttpKernelRuntime;
 use Symfony\Component\Form\FormRenderer;
+use Twig\Extension\DebugExtension;
 
 /**
  * Twig integration for Silex.
@@ -67,7 +68,7 @@ class TwigServiceProvider implements ServiceProviderInterface
             $coreExtension->setNumberFormat($app['twig.number_format.decimals'], $app['twig.number_format.decimal_point'], $app['twig.number_format.thousands_separator']);
 
             if ($app['debug']) {
-                $twig->addExtension(new \Twig_Extension_Debug());
+                $twig->addExtension(new DebugExtension());
             }
 
             if (class_exists('Symfony\Bridge\Twig\Extension\RoutingExtension')) {
