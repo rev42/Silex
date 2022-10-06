@@ -22,19 +22,19 @@ use Symfony\Component\HttpKernel\EventListener\SessionListener as BaseSessionLis
  */
 class SessionListener extends BaseSessionListener
 {
-    private $app;
+    protected $container;
 
     public function __construct(Container $app)
     {
-        $this->app = $app;
+        $this->container = $app;
     }
 
     protected function getSession(): ?SessionInterface
     {
-        if (!isset($this->app['session'])) {
-            return;
+        if (!isset($this->container['session'])) {
+            return null;
         }
 
-        return $this->app['session'];
+        return $this->container['session'];
     }
 }

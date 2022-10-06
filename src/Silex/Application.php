@@ -145,6 +145,11 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
         return $this['controllers']->get($pattern, $to);
     }
 
+    public function has($id)
+    {
+        return isset($this[$id]);
+    }
+
     /**
      * Maps a POST request to a callable.
      *
